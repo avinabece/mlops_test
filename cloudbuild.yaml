@@ -6,7 +6,7 @@ steps:
   args:
   - 'build'
   - '-t'
-  - 'us-central1-docker.pkg.dev/$PROJECT_ID/mlops-test-docker-repo/hello-cloudbuild:$SHORT_SHA'
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/mlops-test-docker-repo/hello-cloudbuild:latest'
   - '.'
 
 # This step pushes the image to Artifact Registry
@@ -16,5 +16,5 @@ steps:
   id: Push
   args:
   - 'push'
-  - 'us-central1-docker.pkg.dev/$PROJECT_ID/mlops-test-docker-repo/hello-cloudbuild:$SHORT_SHA'
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/mlops-test-docker-repo/hello-cloudbuild:latest'
 # [END cloudbuild]
