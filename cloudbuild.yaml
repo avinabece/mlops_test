@@ -16,10 +16,10 @@ steps:
 # Deploy the model.
 - name: 'python:3.9'
   entrypoint: 'python'
-  args: ['test1.py']
+  args: ['test.py']
 
 
 # Upload compiled pipeline to GCS.
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', 'tabular_template.json', 'gs://mlops_poc_health_2022/Avinab_test/']
+  args: ['cp', 'mlops_test/tabular_template.json', 'gs://mlops_poc_health_2022/Avinab_test/']
 
