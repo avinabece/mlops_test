@@ -10,14 +10,12 @@ steps:
 
 
 # Deploy the model.
-- name: 'gcr.io/dca-sandbox-project-4/cicd:latest'
+- name: 'python'
   entrypoint: 'python'
-  args: ['build/test.py']
-  dir: 'mlops_test'
+  args: ['test.py']
 
 
 # Upload compiled pipeline to GCS.
 - name: 'gcr.io/cloud-builders/gsutil'
   args: ['cp', 'tabular_template.json', 'gs://mlops_poc_health_2022/Avinab_test/']
-  dir: 'mlops_test'
 
