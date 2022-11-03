@@ -9,8 +9,8 @@ steps:
   id: 'Clone Repository'
 
 # Install dependencies
-- name: python
-  entrypoint: pip
+- name: 'python 3.9'
+  entrypoint: 'pip3'
   args: ["install", "-r", "r.txt", "--user"]
 
 # Deploy the model.
