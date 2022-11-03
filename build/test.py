@@ -256,6 +256,7 @@ def pipeline(
         )
 
 def compile_pipeline():
+    print("HELLO")
     return compiler.Compiler().compile(pipeline_func=pipeline,package_path='tabular_template.json')
 
 def main():
