@@ -21,5 +21,5 @@ steps:
 
 # Upload compiled pipeline to GCS.
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', 'tabular_template.json', 'gs://mlops_poc_health_2022/Avinab_test/']
+  args: ['cp', 'tabular_template.json', 'gs://mlops_poc_health_2022/pipeline_json/']
 
