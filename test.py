@@ -260,7 +260,7 @@ def compile_pipeline():
     return compiler.Compiler().compile(pipeline_func=pipeline,package_path='tabular_template.json')
 
 def main():
-    print("i am here")
+    print("i am here now")
     result = compile_pipeline()
 
 if __name__ == "__main__":
