@@ -270,3 +270,6 @@ def main():
             )
     start_pipeline.run()
 
+if __name__ == "__main__":
+    main()
+
