@@ -261,4 +261,11 @@ def compile_pipeline():
 
 def main():
     result = compile_pipeline()
+    start_pipeline = pipeline_jobs.PipelineJob(
+            display_name="tabular-pipeline",
+            template_path="tabular_template.json",
+            enable_caching=False,
+            location=REGION,
+            )
+    start_pipeline.run()
 
