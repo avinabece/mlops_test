@@ -8,6 +8,10 @@ steps:
          '--verbose']
   id: 'Clone Repository'
 
+# Install dependencies
+- name: python
+  entrypoint: pip
+  args: ["install", "-r", "r.txt", "--user"]
 
 # Deploy the model.
 - name: 'python'
