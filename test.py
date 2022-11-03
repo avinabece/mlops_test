@@ -262,13 +262,6 @@ def compile_pipeline():
 def main():
     print("i am here")
     result = compile_pipeline()
-    start_pipeline = pipeline_jobs.PipelineJob(
-            display_name="tabular-pipeline",
-            template_path="tabular_template.json",
-            enable_caching=False,
-            location=REGION,
-            )
-    start_pipeline.run()
 
 if __name__ == "__main__":
     main()
