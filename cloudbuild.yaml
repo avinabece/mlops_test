@@ -16,7 +16,7 @@ steps:
 # Deploy the model.
 - name: 'python:3.9'
   entrypoint: 'python'
-  args: ['test.py']
+  args: ['test1.py']
 
 
 # Upload compiled pipeline to GCS.
