@@ -1,20 +1,23 @@
 # [START cloudbuild]
 steps:
-# This step builds the container image.
-- name: 'gcr.io/cloud-builders/docker'
-  id: Build
-  args:
-  - 'build'
-  - '-t'
-  - 'us-central1-docker.pkg.dev/$PROJECT_ID/mlops-test-docker-repo/hello-cloudbuild:latest'
-  - '.'
+# Clone the repository.
+- name: 'gcr.io/cloud-builders/git'
+  args: ['clone', '--single-branch', '--branch',
+         'master', 'https://github.com/avinabece/mlops_test.git',
+         '--depth', '1',
+         '--verbose']
+  id: 'Clone Repository'
 
-# This step pushes the image to Artifact Registry
-# The PROJECT_ID and SHORT_SHA variables are automatically
-# replaced by Cloud Build.
-- name: 'gcr.io/cloud-builders/docker'
-  id: Push
-  args:
-  - 'push'
-  - 'us-central1-docker.pkg.dev/$PROJECT_ID/mlops-test-docker-repo/hello-cloudbuild:latest'
-# [END cloudbuild]
+
+# Deploy the model.
+- name: 'gcr.io/dca-sandbox-project-4/cicd:latest'
+  entrypoint: 'python'
+  args: ['build/test.py']
+  dir: 'mlops_test'
+
+
+# Upload compiled pipeline to GCS.
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['cp', 'tabular_template.json', 'gs://mlops_poc_health_2022/Avinab_test/']
+  dir: 'mlops_test'
+
