@@ -260,6 +260,7 @@ def compile_pipeline():
     return compiler.Compiler().compile(pipeline_func=pipeline,package_path='tabular_template.json')
 
 def main():
+    print("i am here")
     result = compile_pipeline()
     start_pipeline = pipeline_jobs.PipelineJob(
             display_name="tabular-pipeline",
