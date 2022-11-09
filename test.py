@@ -11,6 +11,7 @@ from kfp.v2.dsl import (Artifact,
                         OutputPath,
                         InputPath)
 from kfp.v2 import compiler
+from datetime import datetime
 from google.cloud import bigquery
 from google.cloud import aiplatform
 from google.cloud.aiplatform import pipeline_jobs
@@ -19,7 +20,9 @@ import logging
 import google.cloud.logging
 from google.logging.type import log_severity_pb2 as severity
 client = google.cloud.logging.Client()
-logger = client.logger("DELOITTE_CUSTOM_BUILD_LOGGING_2022_11_09")
+
+time_part=datetime.now().strftime("%Y%m%d%H%M%S")
+logger = client.logger("DELOITTE_CUSTOM_BUILD_LOG_"+time_part)
 
 
 PROJECT_ID='dca-sandbox-project-4' # Change to your projecr
