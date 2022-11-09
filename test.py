@@ -15,6 +15,11 @@ from google.cloud import bigquery
 from google.cloud import aiplatform
 from google.cloud.aiplatform import pipeline_jobs
 from google_cloud_pipeline_components import aiplatform as gcc_aip
+import logging
+import google.cloud.logging
+from google.logging.type import log_severity_pb2 as severity
+client = google.cloud.logging.Client()
+logger = client.logger("DELOITTE_CUSTOM_BUILD_LOGGING_2022_11_09")
 
 
 PROJECT_ID='dca-sandbox-project-4' # Change to your projecr
@@ -256,8 +261,11 @@ def pipeline(
         )
 
 def compile_pipeline():
-    print("HELLO")
-    return compiler.Compiler().compile(pipeline_func=pipeline,package_path='tabular_template.json')
+    logger.log_text("COMILATION STARTED", severity=severity.INFO)
+    compiled=compiler.Compiler().compile(pipeline_func=pipeline,package_path='tabular_template.json')
+    logger.log_text("COMPILATION DONE", severity=severity.INFO)
+
+    return compiled
 
 def main():
     print("i am here now")
