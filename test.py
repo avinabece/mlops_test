@@ -16,6 +16,7 @@ from google.cloud import bigquery
 from google.cloud import aiplatform
 from google.cloud.aiplatform import pipeline_jobs
 from google_cloud_pipeline_components import aiplatform as gcc_aip
+
 import logging
 import google.cloud.logging
 from google.logging.type import log_severity_pb2 as severity
@@ -264,9 +265,10 @@ def pipeline(
         )
 
 def compile_pipeline():
-    logger.log_text("COMILATION STARTED", severity=severity.INFO)
+    logger.log_text("THIS IS VERTEX AI PIPELINE", severity=severity.INFO)
+    logger.log_text("COMILATION STARTED", severity=severity.WARNING)
     compiled=compiler.Compiler().compile(pipeline_func=pipeline,package_path='tabular_template.json')
-    logger.log_text("COMPILATION DONE", severity=severity.INFO)
+    logger.log_text("COMPILATION DONE", severity=severity.ERROR)
 
     return compiled
 
