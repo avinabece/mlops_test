@@ -267,7 +267,7 @@ def pipeline(
 def compile_pipeline():
     logger.log_text("THIS IS VERTEX AI PIPELINE", severity=severity.INFO)
     logger.log_text("COMILATION STARTED", severity=severity.WARNING)
-    compiled=compiler.Compiler().compile(pipeline_func=pipeline,package_path='tabular_template.json')
+    compiled=compiler.Compiler().compile(pipeline_func=pipeline,package_path='tabular_template1.json')
     logger.log_text("COMPILATION DONE", severity=severity.ERROR)
 
     return compiled
